@@ -126,6 +126,31 @@
     border-left:22px solid #fff; border-top:14px solid transparent; border-bottom:14px solid transparent;
     margin-left:3px;
   }
+
+/* 告知ポスター：カード内で大きくなりすぎないように上限を設定 */
+.poster{
+  margin:10px auto 6px;       /* 中央寄せ */
+  max-width: 420px;           /* ← ここが上限。好みで 360〜520px などに */
+}
+.poster img{
+  width:100%;                 /* 上限の中でだけ100%に広がる */
+  height:auto;
+  display:block;
+  border:1px solid var(--line);
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.06);
+}
+.poster figcaption{
+  margin-top:.5rem;
+  color:var(--sub);
+  font-size:.92rem;
+  text-align:center;          /* 画像を中央にしたのでキャプションも中央寄せ */
+}
+
+/* 画面が広いときは少しだけ大きくしてもOK */
+@media (min-width: 960px){
+  .poster{ max-width: 520px; } /* 好みで調整 */
+}
 </style>
 </head>
 <body>
@@ -153,25 +178,26 @@
       <div class="grid cols-2">
        
 	<article>
- 	　 <h3 class="item-title">第2回 林檎収穫祭</h3>
- 	　 <p class="item-meta">2025-11-23</p>
+  <h3 class="item-title">第2回 林檎収穫祭</h3>
+  <p class="item-meta">2025-11-23</p>
 
- 　 <!-- 画像ポスター -->
- 　　 <figure class="poster">
-   　 <img
-      src="assets/img/20251123comper.png"
-      alt="第2回 林檎収穫祭 告知ポスター（2025-11-23 名古屋 Cedar’s）"
-      loading="lazy"
-      width="1200" height="1600" />
-   　 <figcaption>
+  <figure class="poster">
+   <img
+  src="assets/img/20251123comper.png"
+  alt="第2回 林檎収穫祭 告知ポスター（2025-11-23 名古屋 Cedars）"
+  loading="lazy"
+  decoding="async"           <!-- 追加 -->
+  width="1200" height="1600"
+/>
+
+    <figcaption>
       2025-11-23 / 名古屋 Cedar’s &nbsp;|&nbsp;
       <a href="https://fb.me/e/3AX06PKkp" target="_blank" rel="noopener">イベントページ</a>
-   　 </figcaption>
- 　 </figure>
+    </figcaption>
+  </figure>
 
- 	 <!-- 補足の住所などを残したい場合は下に -->
- 	 <p class="item-meta">GK Building B1F, 3-11-13, SAKAE, NAKAKU, NAGOYA</p>
-	</article>
+  <p class="item-meta">GK Building B1F, 3-11-13, SAKAE, NAKAKU, NAGOYA</p>
+</article>
 
 
         <article>
@@ -222,10 +248,13 @@
     <section class="card" style="margin-top:16px">
       <h2>Music Video</h2>
       <a class="yt-card" href="https://www.youtube.com/watch?v=S3ZPEePrnzw" target="_blank" rel="noopener">
-        <img class="yt-thumb"
-             src="https://img.youtube.com/vi/S3ZPEePrnzw/maxresdefault.jpg"
-             onerror="this.src='https://img.youtube.com/vi/S3ZPEePrnzw/hqdefault.jpg';"
-             alt="YouTube thumbnail">
+       <img class="yt-thumb"
+     src="https://img.youtube.com/vi/S3ZPEePrnzw/maxresdefault.jpg"
+     onerror="this.src='https://img.youtube.com/vi/S3ZPEePrnzw/hqdefault.jpg';"
+     alt="YouTube thumbnail"
+     loading="lazy"
+     decoding="async" />
+
         <span class="yt-play" aria-hidden="true"></span>
       </a>
       <p class="item-meta" style="margin-top:10px">
