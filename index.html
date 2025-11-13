@@ -1,44 +1,175 @@
 <!doctype html>
-<html lang="ja"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>meg_v0 – Music Log</title>
-<style>
-  :root{--w:960px;--ink:#222;--sub:#666;--line:#eee;--bg:#faf8f6;--card:#fff}
-  *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans JP",sans-serif}
-  header{padding:48px 16px;background:linear-gradient(180deg,#f8efe8,transparent)}
-  .wrap{max-width:var(--w);margin:0 auto;padding:0 16px}
-  h1{margin:0 0 6px} .sub{color:var(--sub);margin:0 0 18px}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
-  a.btn{display:inline-block;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#f3f1ef;text-decoration:none;color:inherit;font-weight:600;margin-right:8px}
-  ul{margin:0;padding-left:1.2em}
-</style></head><body>
-<header><div class="wrap">
-  <h1>meg_v0 – Music Log</h1>
-  <p class="sub">ライブの記録・音源・制作メモをゆるくまとめる場所。</p>
-  <p>
-    <a class="btn" href="https://www.youtube.com/@YOUR_CHANNEL" target="_blank" rel="noopener">YouTube</a>
-    <a class="btn" href="log.html">活動ログ</a>
-    <a class="btn" href="discography.html">Discography</a>
-  </p>
-</div></header>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>meg_v0 | Music Log</title>
+<meta name="description" content="meg_v0 の音楽活動ログ。制作ノート、リリース、ライブ/動画リンクなどをまとめています。" />
 
-<main class="wrap">
-  <section class="grid">
-    <article class="card">
-      <h3>最新</h3>
+<!-- かわいめ英字フォント（丸み） -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+
+<!-- PWA/OG（任意） -->
+<link rel="icon" href="assets/img/icon.png" sizes="any">
+<link rel="apple-touch-icon" href="assets/img/icon.png" />
+<meta property="og:title" content="meg_v0 | Music Log" />
+<meta property="og:description" content="meg_v0 の音楽活動ログ。制作ノート、リリース、ライブ/動画リンクなど。" />
+<meta property="og:image" content="https://esortseld.github.io/meg_v0/assets/img/icon.png" />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#f7f5f3" />
+
+<style>
+  :root{
+    --bg:#f7f5f3; --ink:#222; --sub:#666; --line:#e8e5e2; --card:#fff;
+    --brand:#6b8cff;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP",
+                 "Hiragino Kaku Gothic ProN", "Yu Gothic", Quicksand, sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+  }
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:980px; margin:0 auto; padding:20px 16px}
+
+  /* ===== Hero ===== */
+  .hero{
+    display:flex; gap:18px; align-items:center;
+    padding:28px 0 12px;
+  }
+  .avatar{
+    width:112px; height:112px; border-radius:50%;
+    object-fit:cover; display:block;
+    border:2px solid #fff;
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+    background:#ddd;
+  }
+  .hero-title{
+    margin:0; font-size:clamp(1.6rem, 3.6vw, 2.2rem);
+    line-height:1.1; font-weight:800; letter-spacing:.5px;
+  }
+  .hero-sub{margin:.35rem 0 0; color:var(--sub)}
+  .nav{
+    margin:14px 0 8px; display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .btn{
+    display:inline-block; padding:10px 14px;
+    border:1px solid var(--line); background:#fff;
+    border-radius:12px; color:var(--ink); font-weight:600;
+  }
+  .btn.primary{background:#eaf0ff; border-color:#dfe7ff; color:#203a97}
+  .btn:hover{box-shadow:0 4px 14px rgba(0,0,0,.06); text-decoration:none}
+
+  /* ===== Sections ===== */
+  h2{font-size:1.12rem; margin:22px 0 10px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px;
+  }
+  .grid{display:grid; gap:14px}
+  @media (min-width:820px){
+    .grid.cols-2{grid-template-columns:1fr 1fr}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  }
+  .item-title{font-weight:700; margin:0 0 6px}
+  .item-meta{color:var(--sub); font-size:.92rem; margin:0 0 10px}
+
+  /* ===== Footer ===== */
+  footer{color:#888; padding:28px 0; font-size:.92rem}
+
+  /* ===== Dark Mode ===== */
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0f0e0e; --ink:#eee; --sub:#aaa; --line:#2a2a2a; --card:#151515;
+      --brand:#8da6ff;
+    }
+    .btn{background:#151515}
+    .btn.primary{background:#182137; border-color:#2b3c6b; color:#cfd9ff}
+    .avatar{border-color:#1b1b1b}
+  }
+</style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="hero">
+      <!-- 丸アイコン画像：assets/img/avatar.png をアップしてパスを合わせてください -->
+      <img src="assets/img/avatar.png" alt="meg_v0 icon" class="avatar" />
+      <div>
+        <h1 class="hero-title">meg_v0</h1>
+        <p class="hero-sub">Music Log｜制作メモ・リリース情報・動画リンク</p>
+        <nav class="nav">
+          <a class="btn primary" href="#latest">最新ログ</a>
+          <a class="btn" href="#releases">リリース一覧</a>
+          <a class="btn" href="#links">リンク</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- 最新ログ -->
+    <section id="latest" class="card" style="margin-bottom:16px">
+      <h2>最新ログ</h2>
+      <div class="grid cols-2">
+        <article>
+          <h3 class="item-title">Demo「untitled_2411」ラフMIX</h3>
+          <p class="item-meta">2025-11-13</p>
+          <p>テンポを 92 → 94 に上げたら歌のノリが良くなった。Bメロのコードを IV→V→iii→vi に変更。</p>
+        </article>
+        <article>
+          <h3 class="item-title">ライブ録音の仮マスタリング</h3>
+          <p class="item-meta">2025-11-10</p>
+          <p>広がりは MS 処理で +10〜12 まで。低域は 60Hz を 1.5dB 抑え、全体に 0.8dB リミット。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- リリース -->
+    <section id="releases" class="card" style="margin-bottom:16px">
+      <h2>リリース</h2>
+      <div class="grid cols-3">
+        <article>
+          <h3 class="item-title">single: first light</h3>
+          <p class="item-meta">2025-09-01</p>
+          <p><a href="#">配信リンク（準備中）</a></p>
+        </article>
+        <article>
+          <h3 class="item-title">EP: paper moons</h3>
+          <p class="item-meta">2025-06-15</p>
+          <p><a href="#">Bandcamp（準備中）</a></p>
+        </article>
+        <article>
+          <h3 class="item-title">score: neko etude</h3>
+          <p class="item-meta">2025-04-28</p>
+          <p><a href="#">スコアPDF（準備中）</a></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- リンク集 -->
+    <section id="links" class="card">
+      <h2>リンク</h2>
       <ul>
-        <li>2025-11-01 ライブ＠xxxx（setlist / memo）</li>
-        <li>新曲デモ「…」(YouTube/Drive)</li>
+        <li><a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://x.com/" target="_blank" rel="noopener">X (Twitter)</a></li>
+        <li><a href="mailto:your_mail@example.com">Contact</a></li>
       </ul>
-    </article>
-    <article class="card">
-      <h3>固定リンク</h3>
-      <ul>
-        <li><a href="log.html">全ログ（年別）</a></li>
-        <li><a href="discography.html">音源まとめ</a></li>
-      </ul>
-    </article>
-  </section>
-</main>
-</body></html>
+      <p style="margin-top:.75rem; color:var(--sub); font-size:.92rem">
+        ※ アイコン画像は <code>assets/img/avatar.png</code> に配置してください。  
+        ファビコン/OG 用の <code>assets/img/icon.png</code> も置くとSNSでの見栄えが良くなります。
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div>© meg_v0</div>
+  </footer>
+</body>
+</html>
