@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>meg_v0 | Music Log</title>
-<meta name="description" content="/Here is the sound where no one fades out/meg_v0 の音楽活動ログ。" />
+<meta name="description" content="Here is the sound where no one fades out / meg_v0 の音楽活動ログ。" />
 
 <!-- かわいめ英字フォント（丸み） -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 <link rel="icon" href="assets/img/icon.png" sizes="any">
 <link rel="apple-touch-icon" href="assets/img/icon.png" />
 <meta property="og:title" content="meg_v0 | Music Log" />
-<meta property="og:description" content="Here is the sound where no one fades out/meg_v0 の音楽活動ログ。" />
+<meta property="og:description" content="Here is the sound where no one fades out / meg_v0 の音楽活動ログ。" />
 <meta property="og:image" content="https://esortseld.github.io/meg_v0/assets/img/icon.png" />
 <meta property="og:type" content="website" />
 <meta name="theme-color" content="#f7f5f3" />
@@ -95,18 +95,43 @@
     .avatar{border-color:#1b1b1b}
   }
 
-  /* === YouTube サムネカード（修正済み：幅100%＆最大幅） === */
-  .yt-card{
-    display:block;             /* これが無いとインラインのままはみ出しやすい */
+  /* === 告知ポスター（サイズ上限を厳格に） === */
+  .poster{
+    margin:10px auto 6px;
+    text-align:center;
+  }
+  .poster img{
+    display:block;
     width:100%;
-    max-width:640px;           /* 好みで調整可 */
+    max-width:360px;        /* PCでもここを上限に */
+    height:auto;
+    margin:0 auto;
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
+  }
+  .poster figcaption{
+    margin-top:.5rem;
+    color:var(--sub);
+    font-size:.92rem;
+    text-align:center;
+  }
+  @media (min-width:1080px){
+    .poster img{ max-width:400px; } /* ほんの少し拡大したい場合 */
+  }
+
+  /* === YouTube サムネ（最大幅を抑える） === */
+  .yt-card{
+    display:block;
+    width:100%;
+    max-width:420px;        /* PCで大きくなりすぎないように */
     margin:8px auto 0;
     position:relative;
     overflow:hidden;
     border-radius:14px;
     border:1px solid var(--line, #e8e5e2);
     background:#000;
-    aspect-ratio:16/9;         /* 比率を維持 */
+    aspect-ratio:16/9;
   }
   .yt-thumb{
     width:100%; height:100%;
@@ -126,44 +151,19 @@
     border-left:22px solid #fff; border-top:14px solid transparent; border-bottom:14px solid transparent;
     margin-left:3px;
   }
-
-/* 告知ポスター：カード内で大きくなりすぎないように上限を設定 */
-.poster{
-  margin:10px auto 6px;       /* 中央寄せ */
-  max-width: 420px;           /* ← ここが上限。好みで 360〜520px などに */
-}
-.poster img{
-  width:100%;                 /* 上限の中でだけ100%に広がる */
-  height:auto;
-  display:block;
-  border:1px solid var(--line);
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.06);
-}
-.poster figcaption{
-  margin-top:.5rem;
-  color:var(--sub);
-  font-size:.92rem;
-  text-align:center;          /* 画像を中央にしたのでキャプションも中央寄せ */
-}
-
-/* 画面が広いときは少しだけ大きくしてもOK */
-@media (min-width: 960px){
-  .poster{ max-width: 520px; } /* 好みで調整 */
-}
 </style>
 </head>
 <body>
   <header class="wrap">
     <div class="hero">
-      <!-- 丸アイコン画像：assets/img/avatar.png をアップしてパスを合わせてください -->
+      <!-- 丸アイコン画像 -->
       <img src="assets/img/avatar.png" alt="meg_v0 icon" class="avatar" />
       <div>
         <h1 class="hero-title">meg_v0</h1>
         <p class="hero-sub">Here is the sound where no one fades out</p>
-	<p>meg_v0 の音楽活動ログ。</p>
+        <p>meg_v0 の音楽活動ログ。</p>
         <nav class="nav">
-          <a class="btn primary" href="#latest">Next Live</a>
+          <a class="btn primary" href="#latest">最新ログ</a>
           <a class="btn" href="#releases">リリース一覧</a>
           <a class="btn" href="#links">リンク</a>
         </nav>
@@ -176,34 +176,32 @@
     <section id="latest" class="card" style="margin-bottom:16px">
       <h2>Next Live</h2>
       <div class="grid cols-2">
-       
-	<article>
-  <h3 class="item-title">第2回 林檎収穫祭</h3>
-  <p class="item-meta">2025-11-23</p>
 
-  <figure class="poster">
- <img
-  src="assets/img/20251123comper.png"
-  alt="第2回 林檎収穫祭 告知ポスター（2025-11-23 名古屋 Cedars）"
-  loading="lazy"
-  decoding="async"           <!-- 追加 -->
-  width="1200" height="1600"
-/>
-    <figcaption>
-      2025-11-23 / 名古屋 Cedar’s &nbsp;|&nbsp;
-      <a href="https://fb.me/e/3AX06PKkp" target="_blank" rel="noopener">イベントページ</a>
-    </figcaption>
-  </figure>
+        <article>
+          <h3 class="item-title">第2回 林檎収穫祭</h3>
+          <p class="item-meta">2025-11-23</p>
 
-  <p class="item-meta">GK Building B1F, 3-11-13, SAKAE, NAKAKU, NAGOYA</p>
-</article>
+          <figure class="poster">
+            <img
+              src="assets/img/20251123comper.png"
+              alt="第2回 林檎収穫祭 告知ポスター（2025-11-23 名古屋 Cedars）"
+              loading="lazy"
+              decoding="async">
+            <figcaption>
+              2025-11-23 / 名古屋 Cedar’s &nbsp;|&nbsp;
+              <a href="https://fb.me/e/3AX06PKkp" target="_blank" rel="noopener">イベントページ</a>
+            </figcaption>
+          </figure>
 
+          <p class="item-meta">GK Building B1F, 3-11-13, SAKAE, NAKAKU, NAGOYA</p>
+        </article>
 
         <article>
           <h3 class="item-title">ライブ録音の仮マスタリング</h3>
           <p class="item-meta">2025-11-10</p>
           <p>広がりは MS 処理で +10〜12 まで。低域は 60Hz を 1.5dB 抑え、全体に 0.8dB リミット。</p>
         </article>
+
       </div>
     </section>
 
@@ -247,13 +245,10 @@
     <section class="card" style="margin-top:16px">
       <h2>Music Video</h2>
       <a class="yt-card" href="https://www.youtube.com/watch?v=S3ZPEePrnzw" target="_blank" rel="noopener">
-       <img class="yt-thumb"
-     src="https://img.youtube.com/vi/S3ZPEePrnzw/maxresdefault.jpg"
-     onerror="this.src='https://img.youtube.com/vi/S3ZPEePrnzw/hqdefault.jpg';"
-     alt="YouTube thumbnail"
-     loading="lazy"
-     decoding="async" />
-
+        <img class="yt-thumb"
+             src="https://img.youtube.com/vi/S3ZPEePrnzw/maxresdefault.jpg"
+             onerror="this.src='https://img.youtube.com/vi/S3ZPEePrnzw/hqdefault.jpg';"
+             alt="YouTube thumbnail">
         <span class="yt-play" aria-hidden="true"></span>
       </a>
       <p class="item-meta" style="margin-top:10px">
