@@ -81,26 +81,86 @@
 
   .project-grid{display:grid; gap:14px}
   .project-card{
-    min-height:220px;
+    min-height:260px;
+    overflow:hidden;
     border:1px solid var(--line);
-    border-radius:14px;
+    border-radius:18px;
     background:var(--card);
-    padding:18px;
+    box-shadow:0 10px 28px rgba(0,0,0,.06);
+    transition:transform .2s ease, box-shadow .2s ease;
   }
-  .project-card__icon{
+  .project-card:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 34px rgba(0,0,0,.09);
+  }
+  .project-card__media{
     display:block;
-    width:72px;
-    height:72px;
-    margin:0 0 .85rem;
-    object-fit:cover;
-    border-radius:999px;
-    border:1px solid var(--line);
+    height:148px;
+    overflow:hidden;
+    position:relative;
     background:#f1efed;
   }
-  .project-card__icon--placeholder{background:transparent; border-color:transparent}
+  .project-card__media img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+  }
+  .project-card__media::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg, rgba(255,255,255,0) 45%, rgba(0,0,0,.18) 100%);
+    pointer-events:none;
+  }
+  .project-card__media--ringo{
+    background:
+      radial-gradient(circle at 28% 32%, rgba(255,255,255,.65) 0 16%, transparent 17%),
+      linear-gradient(135deg, #f6d6d6, #f5efe7 45%, #dce7d2);
+  }
+  .project-card__media--kangaroo{
+    background:
+      radial-gradient(circle at 24% 28%, rgba(255,255,255,.7) 0 14%, transparent 15%),
+      linear-gradient(135deg, #f4d6a8, #f8efe4 48%, #cfe8df);
+  }
+  .project-card__media--sweet{
+    display:flex;
+    align-items:flex-end;
+    min-height:148px;
+    padding:18px;
+    color:#fff;
+    background:
+      radial-gradient(circle at 18% 25%, rgba(255,255,255,.72) 0 10%, transparent 11%),
+      radial-gradient(circle at 80% 18%, rgba(255,255,255,.42) 0 8%, transparent 9%),
+      linear-gradient(135deg, #b8d8ff 0%, #d9c8ff 45%, #ffd6e8 100%);
+  }
+  .project-card__placeholder-text{
+    position:relative;
+    z-index:1;
+    font-family:Quicksand, system-ui, sans-serif;
+    font-size:1.45rem;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-shadow:0 2px 12px rgba(0,0,0,.18);
+  }
+  .project-card__body{padding:16px 16px 18px}
   .project-card h3{margin:0 0 .45rem; font-size:1.2rem; line-height:1.35}
   .project-card p{margin:0; color:var(--sub); line-height:1.7}
   .project-card .link-row{margin-top:12px}
+  .project-card__button{
+    display:inline-block;
+    padding:8px 12px;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:#fafafa;
+    color:var(--ink);
+    font-size:.92rem;
+    font-weight:700;
+  }
+  .project-card__button:hover{
+    text-decoration:none;
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
+  }
 
   footer{color:#888; padding:28px 0; font-size:.92rem}
 
@@ -112,7 +172,8 @@
     .btn{background:#151515}
     .btn.primary{background:#182137; border-color:#2b3c6b; color:#cfd9ff}
     .avatar{border-color:#1b1b1b}
-    .project-card__icon{background:#202020}
+    .project-card{box-shadow:0 10px 28px rgba(0,0,0,.25)}
+    .project-card__button{background:#1d1d1d}
   }
 
   .poster{
@@ -174,6 +235,7 @@
     .hero{align-items:flex-start}
     .avatar{width:88px; height:88px}
     .project-card{min-height:0}
+    .project-card__media{height:156px}
   }
 </style>
 </head>
@@ -195,6 +257,44 @@
   </header>
 
   <main class="wrap">
+    <section id="projects" class="card section-card" aria-labelledby="projects-title">
+      <h2 id="projects-title">01 バンド別メモ</h2>
+      <div class="project-grid grid cols-3">
+        <article class="project-card">
+          <a class="project-card__media project-card__media--ringo" href="https://esortseld.github.io/ringo-an_information/" aria-label="林檎庵 informationへ">
+            <img src="assets/img/ringo-an_image.PNG" alt="林檎庵 イメージ" loading="lazy" decoding="async" onerror="this.style.display='none'">
+          </a>
+          <div class="project-card__body">
+            <h3>林檎庵</h3>
+            <p>椎名林檎・東京事変カバーバンドの楽曲メモ</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-card__media project-card__media--kangaroo" href="https://esortseld.github.io/talk-notes/kangaroo-pocket.html" aria-label="カンガルーポケットページへ">
+            <img src="assets/img/kangaroo-pocket_image.PNG" alt="カンガルーポケット イメージ" loading="lazy" decoding="async" onerror="this.style.display='none'">
+          </a>
+          <div class="project-card__body">
+            <h3>カンガルーポケット</h3>
+            <p>J-popカバーバンドの楽曲メモ</p>
+            <div class="link-row">
+              <a class="project-card__button" href="https://esortseld.github.io/talk-notes/kangaroo-pocket.html">カンガルーポケットページへ</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__media project-card__media--sweet" aria-hidden="true">
+            <span class="project-card__placeholder-text">Sweet Pastime</span>
+          </div>
+          <div class="project-card__body">
+            <h3>Sweet Pastime</h3>
+            <p>80年代アイドル・シティポップ系カバーの楽曲メモ</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="latest" class="card section-card">
       <h2>Next Live</h2>
       <article>
@@ -215,36 +315,6 @@
 
         <p class="item-meta">GK Building B1F, 3-11-13, SAKAE, NAKAKU, NAGOYA</p>
       </article>
-    </section>
-
-    <section id="projects" class="card section-card" aria-labelledby="projects-title">
-      <h2 id="projects-title">01 バンド別メモ</h2>
-      <div class="project-grid grid cols-3">
-        <article class="project-card">
-          <a href="https://esortseld.github.io/ringo-an_information/" aria-label="林檎庵 informationへ">
-            <img class="project-card__icon" src="assets/img/ringo-an_image.PNG" alt="林檎庵 アイコン">
-          </a>
-          <h3>林檎庵</h3>
-          <p>椎名林檎・東京事変カバーバンドの楽曲メモ</p>
-        </article>
-
-        <article class="project-card">
-          <a href="https://esortseld.github.io/talk-notes/kangaroo-pocket.html" aria-label="カンガルーポケットページへ">
-            <img class="project-card__icon" src="assets/img/kangaroo-pocket_image.PNG" alt="カンガルーポケット アイコン">
-          </a>
-          <h3>カンガルーポケット</h3>
-          <p>J-popカバーバンドの楽曲メモ</p>
-          <div class="link-row">
-            <a href="https://esortseld.github.io/talk-notes/kangaroo-pocket.html">カンガルーポケットページへ</a>
-          </div>
-        </article>
-
-        <article class="project-card project-card--empty-icon">
-          <div class="project-card__icon project-card__icon--placeholder" aria-hidden="true"></div>
-          <h3>Sweet Pastime</h3>
-          <p>80年代アイドル・シティポップ系カバーの楽曲メモ</p>
-        </article>
-      </div>
     </section>
 
     <section id="links" class="card">
