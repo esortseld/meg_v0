@@ -6,11 +6,9 @@
 <title>meg_v0 | Music Log</title>
 <meta name="description" content="Here is the sound where no one fades out / meg_v0 の音楽活動ログ。" />
 
-<!-- かわいめ英字フォント（丸み） -->
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
 
-<!-- PWA/OG（任意） -->
 <link rel="icon" href="assets/img/icon.png" sizes="any">
 <link rel="apple-touch-icon" href="assets/img/icon.png" />
 <meta property="og:title" content="meg_v0 | Music Log" />
@@ -37,11 +35,11 @@
   a:hover{text-decoration:underline}
   .wrap{max-width:980px; margin:0 auto; padding:20px 16px}
 
-  /* ===== Hero ===== */
   .hero{
     display:flex; gap:18px; align-items:center;
     padding:28px 0 12px;
   }
+  .hero > div{min-width:0}
   .avatar{
     width:112px; height:112px; border-radius:50%;
     object-fit:cover; display:block;
@@ -65,14 +63,14 @@
   .btn.primary{background:#eaf0ff; border-color:#dfe7ff; color:#203a97}
   .btn:hover{box-shadow:0 4px 14px rgba(0,0,0,.06); text-decoration:none}
 
-  /* ===== Sections ===== */
-  h2{font-size:1.12rem; margin:22px 0 10px}
+  h2{font-size:1.12rem; margin:0 0 10px}
   .card{
     background:var(--card);
     border:1px solid var(--line);
     border-radius:14px;
     padding:16px;
   }
+  .section-card{margin-bottom:16px}
   .grid{display:grid; gap:14px}
   @media (min-width:820px){
     .grid.cols-2{grid-template-columns:1fr 1fr}
@@ -81,10 +79,31 @@
   .item-title{font-weight:700; margin:0 0 6px}
   .item-meta{color:var(--sub); font-size:.92rem; margin:0 0 10px}
 
-  /* ===== Footer ===== */
+  .project-grid{display:grid; gap:14px}
+  .project-card{
+    min-height:220px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:var(--card);
+    padding:18px;
+  }
+  .project-card__icon{
+    display:block;
+    width:72px;
+    height:72px;
+    margin:0 0 .85rem;
+    object-fit:cover;
+    border-radius:999px;
+    border:1px solid var(--line);
+    background:#f1efed;
+  }
+  .project-card__icon--placeholder{background:transparent; border-color:transparent}
+  .project-card h3{margin:0 0 .45rem; font-size:1.2rem; line-height:1.35}
+  .project-card p{margin:0; color:var(--sub); line-height:1.7}
+  .project-card .link-row{margin-top:12px}
+
   footer{color:#888; padding:28px 0; font-size:.92rem}
 
-  /* ===== Dark Mode ===== */
   @media (prefers-color-scheme: dark){
     :root{
       --bg:#0f0e0e; --ink:#eee; --sub:#aaa; --line:#2a2a2a; --card:#151515;
@@ -93,17 +112,17 @@
     .btn{background:#151515}
     .btn.primary{background:#182137; border-color:#2b3c6b; color:#cfd9ff}
     .avatar{border-color:#1b1b1b}
+    .project-card__icon{background:#202020}
   }
 
-  /* === 告知ポスター（サイズ上限を厳格に） === */
   .poster{
-    margin:10px auto 6px;
+    margin:10px 0 6px;
     text-align:center;
   }
   .poster img{
     display:block;
     width:100%;
-    max-width:360px;        /* PCでもここを上限に */
+    max-width:360px;
     height:auto;
     margin:0 auto;
     border:1px solid var(--line);
@@ -117,14 +136,13 @@
     text-align:center;
   }
   @media (min-width:1080px){
-    .poster img{ max-width:400px; } /* ほんの少し拡大したい場合 */
+    .poster img{ max-width:400px; }
   }
 
-  /* === YouTube サムネ（最大幅を抑える） === */
   .yt-card{
     display:block;
     width:100%;
-    max-width:420px;        /* PCで大きくなりすぎないように */
+    max-width:420px;
     margin:8px auto 0;
     position:relative;
     overflow:hidden;
@@ -151,12 +169,17 @@
     border-left:22px solid #fff; border-top:14px solid transparent; border-bottom:14px solid transparent;
     margin-left:3px;
   }
+
+  @media (max-width:640px){
+    .hero{align-items:flex-start}
+    .avatar{width:88px; height:88px}
+    .project-card{min-height:0}
+  }
 </style>
 </head>
 <body>
   <header class="wrap">
     <div class="hero">
-      <!-- 丸アイコン画像 -->
       <img src="assets/img/avatar.png" alt="meg_v0 icon" class="avatar" />
       <div>
         <h1 class="hero-title">meg_v0</h1>
@@ -164,7 +187,7 @@
         <p>meg_v0 の音楽活動ログ。</p>
         <nav class="nav">
           <a class="btn primary" href="#latest">最新ログ</a>
-          <a class="btn" href="#releases">リリース一覧</a>
+          <a class="btn" href="#projects">バンド別メモ</a>
           <a class="btn" href="#links">リンク</a>
         </nav>
       </div>
@@ -172,62 +195,58 @@
   </header>
 
   <main class="wrap">
-    <!-- 最新ログ -->
-    <section id="latest" class="card" style="margin-bottom:16px">
+    <section id="latest" class="card section-card">
       <h2>Next Live</h2>
-      <div class="grid cols-2">
+      <article>
+        <h3 class="item-title">第2回 林檎収穫祭</h3>
+        <p class="item-meta">2025-11-23</p>
 
-        <article>
-          <h3 class="item-title">第2回 林檎収穫祭</h3>
-          <p class="item-meta">2025-11-23</p>
+        <figure class="poster">
+          <img
+            src="assets/img/20251123comper.png"
+            alt="第2回 林檎収穫祭 告知ポスター（2025-11-23 名古屋 Cedars）"
+            loading="lazy"
+            decoding="async">
+          <figcaption>
+            2025-11-23 / 名古屋 Cedar's &nbsp;|&nbsp;
+            <a href="https://fb.me/e/3AX06PKkp" target="_blank" rel="noopener">イベントページ</a>
+          </figcaption>
+        </figure>
 
-          <figure class="poster">
-            <img
-              src="assets/img/20251123comper.png"
-              alt="第2回 林檎収穫祭 告知ポスター（2025-11-23 名古屋 Cedars）"
-              loading="lazy"
-              decoding="async">
-            <figcaption>
-              2025-11-23 / 名古屋 Cedar’s &nbsp;|&nbsp;
-              <a href="https://fb.me/e/3AX06PKkp" target="_blank" rel="noopener">イベントページ</a>
-            </figcaption>
-          </figure>
+        <p class="item-meta">GK Building B1F, 3-11-13, SAKAE, NAKAKU, NAGOYA</p>
+      </article>
+    </section>
 
-          <p class="item-meta">GK Building B1F, 3-11-13, SAKAE, NAKAKU, NAGOYA</p>
+    <section id="projects" class="card section-card" aria-labelledby="projects-title">
+      <h2 id="projects-title">01 バンド別メモ</h2>
+      <div class="project-grid grid cols-3">
+        <article class="project-card">
+          <a href="https://esortseld.github.io/ringo-an_information/" aria-label="林檎庵 informationへ">
+            <img class="project-card__icon" src="assets/img/ringo-an_image.PNG" alt="林檎庵 アイコン">
+          </a>
+          <h3>林檎庵</h3>
+          <p>椎名林檎・東京事変カバーバンドの楽曲メモ</p>
         </article>
 
-        <article>
-          <h3 class="item-title">ライブ録音の仮マスタリング</h3>
-          <p class="item-meta">2025-11-10</p>
-          <p>広がりは MS 処理で +10〜12 まで。低域は 60Hz を 1.5dB 抑え、全体に 0.8dB リミット。</p>
+        <article class="project-card">
+          <a href="https://esortseld.github.io/talk-notes/kangaroo-pocket.html" aria-label="カンガルーポケットページへ">
+            <img class="project-card__icon" src="assets/img/kangaroo-pocket_image.PNG" alt="カンガルーポケット アイコン">
+          </a>
+          <h3>カンガルーポケット</h3>
+          <p>J-popカバーバンドの楽曲メモ</p>
+          <div class="link-row">
+            <a href="https://esortseld.github.io/talk-notes/kangaroo-pocket.html">カンガルーポケットページへ</a>
+          </div>
         </article>
 
+        <article class="project-card project-card--empty-icon">
+          <div class="project-card__icon project-card__icon--placeholder" aria-hidden="true"></div>
+          <h3>Sweet Pastime</h3>
+          <p>80年代アイドル・シティポップ系カバーの楽曲メモ</p>
+        </article>
       </div>
     </section>
 
-    <!-- リリース -->
-    <section id="releases" class="card" style="margin-bottom:16px">
-      <h2>リリース</h2>
-      <div class="grid cols-3">
-        <article>
-          <h3 class="item-title">single: first light</h3>
-          <p class="item-meta">2025-09-01</p>
-          <p><a href="#">配信リンク（準備中）</a></p>
-        </article>
-        <article>
-          <h3 class="item-title">EP: paper moons</h3>
-          <p class="item-meta">2025-06-15</p>
-          <p><a href="#">Bandcamp（準備中）</a></p>
-        </article>
-        <article>
-          <h3 class="item-title">score: neko etude</h3>
-          <p class="item-meta">2025-04-28</p>
-          <p><a href="#">スコアPDF（準備中）</a></p>
-        </article>
-      </div>
-    </section>
-
-    <!-- リンク集 -->
     <section id="links" class="card">
       <h2>リンク</h2>
       <ul>
@@ -236,12 +255,11 @@
         <li><a href="mailto:your_mail@example.com">Contact</a></li>
       </ul>
       <p class="item-meta" style="margin-top:.75rem">
-        ※ アイコン画像は <code>assets/img/avatar.png</code> に配置してください。  
+        ※ アイコン画像は <code>assets/img/avatar.png</code> に配置してください。
         ファビコン/OG 用の <code>assets/img/icon.png</code> も置くとSNSでの見栄えが良くなります。
       </p>
     </section>
 
-    <!-- Music Video -->
     <section class="card" style="margin-top:16px">
       <h2>Music Video</h2>
       <a class="yt-card" href="https://www.youtube.com/watch?v=S3ZPEePrnzw" target="_blank" rel="noopener">
