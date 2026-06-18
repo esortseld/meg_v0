@@ -196,6 +196,44 @@
     font-size:.92rem;
     text-align:center;
   }
+  .live-block{
+    margin-top:14px;
+    padding:14px;
+    border:1px solid var(--line);
+    border-radius:14px;
+    background:#fff;
+  }
+  .live-block + .live-block{margin-top:16px}
+  .live-block.upcoming{
+    border-color:#dfe7ff;
+    background:#fbfcff;
+  }
+  .live-block.past{
+    opacity:.72;
+    background:#fafafa;
+  }
+  .live-label{
+    display:inline-block;
+    margin:0 0 8px;
+    padding:4px 10px;
+    border-radius:999px;
+    background:#eaf0ff;
+    color:#203a97;
+    font-size:.82rem;
+    font-weight:700;
+  }
+  .live-block.past .live-label{
+    background:#eee;
+    color:#666;
+  }
+  .poster-grid{
+    display:grid;
+    gap:12px;
+    margin-top:10px;
+  }
+  @media (min-width:720px){
+    .poster-grid{grid-template-columns:1fr 1fr}
+  }
   @media (min-width:1080px){
     .poster img{ max-width:400px; }
   }
@@ -295,9 +333,34 @@
 
     <section id="latest" class="card section-card">
       <h2>Next Live</h2>
-      <article>
+
+      <article class="live-block upcoming">
+        <p class="live-label">これからのライブ予定</p>
+        <h3 class="item-title">カンガルーポケット 七夕LIVE</h3>
+        <p class="item-meta">2026-07-04 / Seven Bridges Road</p>
+
+        <div class="poster-grid">
+          <figure class="poster">
+            <img
+              src="https://esortseld.github.io/kangaroo-pocket_information/assets/image/2026070401.jpg"
+              alt="カンガルーポケット 七夕LIVE フライヤー1"
+              loading="lazy"
+              decoding="async">
+          </figure>
+          <figure class="poster">
+            <img
+              src="https://esortseld.github.io/kangaroo-pocket_information/assets/image/2026070402.jpg"
+              alt="カンガルーポケット 七夕LIVE フライヤー2"
+              loading="lazy"
+              decoding="async">
+          </figure>
+        </div>
+      </article>
+
+      <article class="live-block past">
+        <p class="live-label">済み</p>
         <h3 class="item-title">第2回 林檎収穫祭</h3>
-        <p class="item-meta">2025-11-23</p>
+        <p class="item-meta">2025-11-23 / 名古屋 Cedar's</p>
 
         <figure class="poster">
           <img
@@ -306,7 +369,7 @@
             loading="lazy"
             decoding="async">
           <figcaption>
-            2025-11-23 / 名古屋 Cedar's &nbsp;|&nbsp;
+            終了済み / 2025-11-23 / 名古屋 Cedar's &nbsp;|&nbsp;
             <a href="https://fb.me/e/3AX06PKkp" target="_blank" rel="noopener">イベントページ</a>
           </figcaption>
         </figure>
