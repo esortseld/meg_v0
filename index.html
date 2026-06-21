@@ -134,6 +134,17 @@
       radial-gradient(circle at 80% 18%, rgba(255,255,255,.42) 0 8%, transparent 9%),
       linear-gradient(135deg, #b8d8ff 0%, #d9c8ff 45%, #ffd6e8 100%);
   }
+  .project-card__media--songs{
+    display:flex;
+    align-items:flex-end;
+    min-height:148px;
+    padding:18px;
+    color:#fff;
+    background:
+      radial-gradient(circle at 16% 24%, rgba(255,255,255,.68) 0 9%, transparent 10%),
+      radial-gradient(circle at 72% 32%, rgba(255,255,255,.45) 0 7%, transparent 8%),
+      linear-gradient(135deg, #c7d7ff 0%, #f1dcff 50%, #ffe4d6 100%);
+  }
   .project-card__placeholder-text{
     position:relative;
     z-index:1;
@@ -288,6 +299,7 @@
         <nav class="nav">
           <a class="btn primary" href="#latest">最新ログ</a>
           <a class="btn" href="#projects">バンド別メモ</a>
+          <a class="btn" href="#songs">楽曲メモ</a>
           <a class="btn" href="#links">リンク</a>
           <a class="btn" href="https://esortseld.github.io/talk-notes/index.html">Talk Notes</a>
         </nav>
@@ -329,6 +341,20 @@
           </div>
         </article>
       </div>
+    </section>
+
+    <section id="songs" class="card section-card" aria-labelledby="songs-title">
+      <h2 id="songs-title">02 楽曲メモ</h2>
+      <article class="project-card">
+        <a class="project-card__media project-card__media--songs" href="https://esortseld.github.io/talk-notes/songs.html" aria-label="楽曲メモへ">
+          <span class="project-card__placeholder-text">Songs</span>
+        </a>
+        <div class="project-card__body">
+          <h3>楽曲メモ</h3>
+          <p>曲名、アーティスト、使用バンド、ライブ実績、外部歌詞リンクを展示室のように整理します。</p>
+          <p class="link-row"><a class="project-card__button" href="https://esortseld.github.io/talk-notes/songs.html">Songsへ</a></p>
+        </div>
+      </article>
     </section>
 
     <section id="latest" class="card section-card">
